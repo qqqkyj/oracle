@@ -273,10 +273,30 @@ from food f, jumun j
 where f.fno=j.fno
 order by j.name;
 
+commit;
+----------------------------------
+create sequence seq_board;
 
+create table snsboard(
+b_num number(5) constraint snsboard_pk_b_number primary key,
+nick varchar2(20),
+subject varchar2(30),
+content varchar2(100),
+wday date);
 
+select * from snsboard;
+insert into snsboard values(seq_board.nextval,'QQ뿡뿡이','게시판만들기','테이블을 만들어보아요',sysdate);
+insert into snsboard values(seq_board.nextval,'요롱이','jdbc','자바와 오라클을 연동해 보아요',sysdate);
+insert into snsboard values(seq_board.nextval,'공룡이','공부중','하하하하공부중',sysdate);
+insert into snsboard values(seq_board.nextval,'말왕','오늘은 가슴운동','뭐부터 해야되나..',sysdate);
+insert into snsboard values(seq_board.nextval,'지피티','라면먹방','라면하면 지피티',sysdate);
+insert into snsboard values(seq_board.nextval,'곽튜브','유튜버','안녕하세요 곽튭입니다',sysdate);
+insert into snsboard values(seq_board.nextval,'QQ뿡뿡이','게시판만들기2','테이블 만들기 테스트중',sysdate);
+insert into snsboard values(seq_board.nextval,'오라클','연동','연동해 보는 중',sysdate);
+insert into snsboard values(seq_board.nextval,'크리스','크리스범스테드','헤이 매엔',sysdate);
+insert into snsboard values(seq_board.nextval,'로니콜먼','월드체스트데이','이지웨잇베이베',sysdate);
 
-
+commit;
 
 
 
