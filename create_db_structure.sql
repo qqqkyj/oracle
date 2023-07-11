@@ -230,29 +230,25 @@ roll back;
 ---------------------------------------------------------
 --음식주문db
 create sequence seq_food;
-
+---------------------------
 create table food(
 fno number(5) constraint food_pk_fno primary key,
 foodname varchar2(20),
 price number(20),
 shopname varchar2(20),
 loc varchar2(50));
-
 ----------food insert
 insert into food values(seq_food.nextval,'김치찌개',6000,'할머니찌개','강남구 역삼동');
 insert into food values(seq_food.nextval,'된장찌개',7000,'할머니찌개','강남구 역삼동');
 insert into food values(seq_food.nextval,'쌀국수',6000,'포베이','강남구 개포동');
 insert into food values(seq_food.nextval,'라면',3000,'둘리분식','송파구 천호동');
 insert into food values(seq_food.nextval,'순대국',8000,'할머니찌개','강남구 역삼동');
-
-select * from food;
-
+------------------------------------------------------------------------------------
 create table jumun(
 num number(5) constraint jumun_pk_num primary key,
 name varchar2(20),
 fno number(5) constraint food_fk_fno references food(fno) on delete cascade,
 addr varchar2(50));
-
 -----------jumun insert
 insert into jumun values(seq_food.nextval,'홍길동',2,'강남구 역삼동');
 insert into jumun values(seq_food.nextval,'홍길순',6,'강남구 역삼동');
@@ -261,7 +257,7 @@ insert into jumun values(seq_food.nextval,'김희동',4,'강남구 일원동');
 insert into jumun values(seq_food.nextval,'김라희',3,'강남구 역삼동');
 
 select * from jumun;
-
+select * from food;
 --=============================================
 --주문번호 주문자 음식명 가격 상호명 가게위치 주문자위치
 --이렇게 출력 주문자이름이 오름차순으로 출력할 것
@@ -275,14 +271,14 @@ order by j.name;
 
 commit;
 ----------------------------------
-create sequence seq_board;
+create sequence seq_board;--primary key로 활용한 sequence 생성
 
-create table snsboard(
-b_num number(5) constraint snsboard_pk_b_number primary key,
-nick varchar2(20),
-subject varchar2(30),
-content varchar2(100),
-wday date);
+create table snsboard(--테이블 생성
+b_num number(5) constraint snsboard_pk_b_number primary key,--기본키
+nick varchar2(20),--작성자 닉네임
+subject varchar2(30),--제목
+content varchar2(100),--내용
+wday date);--작성날짜
 
 select * from snsboard;
 insert into snsboard values(seq_board.nextval,'QQ뿡뿡이','게시판만들기','테이블을 만들어보아요',sysdate);
@@ -298,6 +294,7 @@ insert into snsboard values(seq_board.nextval,'로니콜먼','월드체스트데이','이지�
 
 commit;
 
+select * from snsboard;
 
 
 
